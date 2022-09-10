@@ -3,6 +3,7 @@ package base;
 import com.applitools.eyes.MatchLevel;
 import com.applitools.eyes.selenium.Eyes;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
@@ -21,9 +22,9 @@ public class BaseTests {
         driver = new ChromeDriver();
         initiateEyes();
         driver.manage().window().maximize();
-        //String url="file://E:/Testing/Automation Testing/Java/OOP/automated-visual-testing-chapter3/website/index.html";
-
-        driver.get("https://the-internet.herokuapp.com/dynamic_content");
+        String urlBookStore="file://E:/Testing/Automation Testing/Java/OOP/automated-visual-testing-chapter3/website/index.html";
+         String urlInternet="https://the-internet.herokuapp.com/large";
+        driver.get(urlBookStore);
         System.out.println("Window Title : " + driver.getTitle());
         page=new SearchPage(driver);
     }
@@ -37,12 +38,23 @@ public class BaseTests {
         eyes.setApiKey("nl75tQMCVt5tZ7HcGJohzdjuf2yneMFulP101Hwn71Z9E110");
     }
     public void validateWindow(){
-        eyes.open(driver, "Automation Bookstore",Thread.currentThread().getStackTrace()[2].getMethodName());
+        eyes.open(driver, "The internet",Thread.currentThread().getStackTrace()[2].getMethodName());
 //        eyes.setMatchLevel(MatchLevel.STRICT);
 //        eyes.setMatchLevel(MatchLevel.EXACT);
 //        eyes.setMatchLevel(MatchLevel.CONTENT);
-        eyes.setMatchLevel(MatchLevel.LAYOUT);
+        //eyes.setMatchLevel(MatchLevel.LAYOUT);
+        eyes.setForceFullPageScreenshot(true);
         eyes.checkWindow();
+        eyes.close();
+    }
+    public void validateElement(By locator){
+        eyes.open(driver, "Automation Bookstore", Thread.currentThread().getStackTrace()[2].getMethodName());
+        eyes.checkElement(locator);
+        eyes.close();
+    }
+    public void validateFrame(String locator){
+        eyes.open(driver, "The Internet", Thread.currentThread().getStackTrace()[2].getMethodName());
+        eyes.checkFrame(locator);
         eyes.close();
     }
 }
