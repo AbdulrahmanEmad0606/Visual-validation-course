@@ -58,4 +58,19 @@ public class SearchPage {
     private List<WebElement> findVisibleBooks(){
         return driver.findElements(visibleBooks);
     }
+    public void sortLastNameColumn(){
+        driver.findElement(By.xpath("//*[@id=\"table1\"]/thead/tr/th[1]/span")).click();
+    }
+    public void sortFirstNameColumn(){
+        driver.findElement(By.xpath("//*[@id=\"table1\"]/thead/tr/th[2]/span")).click();
+    }
+    public void sortEmailColumn(){
+        driver.findElement(By.xpath("//*[@id=\"table1\"]/thead/tr/th[3]/span")).click();
+    }
+    public void sortDueColumn(){
+        driver.findElement(By.xpath(" //*[@id=\"table1\"]/thead/tr/th[4]/span")).click();
+    }
+    public void sortWebSiteColumn(){
+        driver.findElement(By.xpath(" //*[@id=\"table1\"]/thead/tr/th[5]/span")).click();
+    }
 }
