@@ -38,7 +38,7 @@ public class BaseTests {
     }
     public void validateWindow(){
         eyes.open(driver, "Automation Bookstore",Thread.currentThread().getStackTrace()[2].getMethodName());
-        
+
         eyes.checkWindow();
         eyes.close();
     }
